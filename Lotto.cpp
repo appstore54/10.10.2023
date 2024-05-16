@@ -5,7 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
-
+#include<istream>
+#include<string>
 using namespace std;
 
 void wyczyscBufor() {
@@ -33,22 +34,24 @@ void zapiszLiczbyDoPliku(const string& nazwaPliku, const vector<int>& liczby) {
         }
         plik << "\n";
         plik.close();
-    } else {
-        cerr << "Błąd: Nie można otworzyć pliku do zapisu: " << nazwaPliku << endl;
+    }
+    else {
+        cerr << "Blad: Nie mozna otworzyc pliku do zapisu: " << nazwaPliku << endl;
     }
 }
 
 void pobierzLiczbyUzytkownika(vector<int>& liczby) {
     liczby.clear();
-    cout << "Podaj 6 unikalnych liczb z zakresu od 1 do 49:" << endl;
+    std::cout << "Podaj 6 unikalnych liczb z zakresu od 1 do 49:" << endl;
     for (int i = 0; i < 6; ++i) {
         int num;
         cin >> num;
         if (cin.fail() || num < 1 || num > 49 || find(liczby.begin(), liczby.end(), num) != liczby.end()) {
-            cout << "Nieprawidłowe dane. Podaj unikalną liczbę z zakresu od 1 do 49." << endl;
+            std::cout << "Nieprawidlowe dane. Podaj unikalna liczbe z zakresu od 1 do 49." << endl;
             wyczyscBufor();
             --i;
-        } else {
+        }
+        else {
             liczby.push_back(num);
         }
     }
@@ -69,10 +72,10 @@ int main() {
     string nazwaGracza;
     int liczbaLosowan;
 
-    cout << "Podaj swoje imię: ";
+    std::cout << "Podaj swoje imie: ";
     getline(cin, nazwaGracza);
 
-    cout << "Ile losowań chcesz zagrać? ";
+    std::cout << "Ile losowan chcesz zagrac? ";
     cin >> liczbaLosowan;
 
     vector<int> liczbyUzytkownika;
@@ -83,14 +86,15 @@ int main() {
         for (int i = 0; i < liczbaLosowan; ++i) {
             vector<int> liczbyLotto;
             wygenerujLosoweLiczby(liczbyLotto);
-            zapiszLiczbyDoPliku("lotto.txt", liczbyLotto);
-            
+            zapiszLiczbyDoPliku("C:/Users/Uczen/Desktop/lotto/Lotto.cpp", liczbyLotto);
+
             int trafioneLiczby = policzTrafioneLiczby(liczbyUzytkownika, liczbyLotto);
-            cout << "Losowanie " << (i + 1) << ": Trafiłeś " << trafioneLiczby << " liczb." << endl;
+            std::cout << "Losowanie " << (i + 1) << ": Trafiles " << trafioneLiczby << " liczb." << endl;
         }
         plikGracza.close();
-    } else {
-        cerr << "Błąd: Nie można utworzyć lub otworzyć pliku gracza." << endl;
+    }
+    else {
+        cerr << "Blad: Nie mozna utworzyc lub otworzyc pliku gracza." << endl;
     }
 
     return 0;
