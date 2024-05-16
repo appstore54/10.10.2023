@@ -5,8 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
-#include<istream>
-#include<string>
+#include <istream>
+#include <string>
 using namespace std;
 
 void wyczyscBufor() {
@@ -86,7 +86,7 @@ int main() {
         for (int i = 0; i < liczbaLosowan; ++i) {
             vector<int> liczbyLotto;
             wygenerujLosoweLiczby(liczbyLotto);
-            zapiszLiczbyDoPliku("C:/Users/Uczen/Desktop/lotto/Lotto.cpp", liczbyLotto);
+            zapiszLiczbyDoPliku(nazwaGracza + ".txt", liczbyLotto);
 
             int trafioneLiczby = policzTrafioneLiczby(liczbyUzytkownika, liczbyLotto);
             std::cout << "Losowanie " << (i + 1) << ": Trafiles " << trafioneLiczby << " liczb." << endl;
